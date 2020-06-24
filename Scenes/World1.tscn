@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MovingPlatform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/icon.png" type="Texture" id=4]
+[ext_resource path="res://Stairs.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -10,6 +12,7 @@ extents = Vector2( 32, 32 )
 [node name="World1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 0 )
 
 [node name="Platforms 1" type="Node" parent="."]
 
@@ -407,47 +410,6 @@ texture = ExtResource( 4 )
 position = Vector2( 96, -32 )
 shape = SubResource( 1 )
 
-[node name="PlatformRed2" type="StaticBody2D" parent="Platforms 5"]
-position = Vector2( -768, 384 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms 5/PlatformRed2"]
-position = Vector2( 96, 0 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Platforms 5/PlatformRed2"]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 96, 0 )
-texture = ExtResource( 4 )
-
-[node name="DangerPlatform" type="Area2D" parent="Platforms 5/PlatformRed2"]
-position = Vector2( -64, 0 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms 5/PlatformRed2/DangerPlatform"]
-position = Vector2( 160, -32 )
-shape = SubResource( 1 )
-
-[node name="PlatformRed3" type="StaticBody2D" parent="Platforms 5"]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( -704, 384 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms 5/PlatformRed3"]
-position = Vector2( 96, 0 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Platforms 5/PlatformRed3"]
-position = Vector2( 96, 0 )
-texture = ExtResource( 4 )
-
-[node name="DangerPlatform" type="Area2D" parent="Platforms 5/PlatformRed3"]
-position = Vector2( -128, 0 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms 5/PlatformRed3/DangerPlatform"]
-position = Vector2( 224, -32 )
-shape = SubResource( 1 )
-
 [node name="Platform3" type="StaticBody2D" parent="Platforms 5"]
 position = Vector2( -896, 384 )
 __meta__ = {
@@ -476,6 +438,34 @@ shape = SubResource( 1 )
 position = Vector2( 96, 0 )
 texture = ExtResource( 4 )
 
+[node name="Platform7" type="StaticBody2D" parent="Platforms 5"]
+position = Vector2( -704, 384 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms 5/Platform7"]
+position = Vector2( 96, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Platforms 5/Platform7"]
+position = Vector2( 96, 0 )
+texture = ExtResource( 4 )
+
+[node name="Platform8" type="StaticBody2D" parent="Platforms 5"]
+position = Vector2( -768, 384 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms 5/Platform8"]
+position = Vector2( 96, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Platforms 5/Platform8"]
+position = Vector2( 96, 0 )
+texture = ExtResource( 4 )
+
 [node name="Platform5" type="StaticBody2D" parent="Platforms 5"]
 position = Vector2( -576, 384 )
 __meta__ = {
@@ -490,17 +480,28 @@ shape = SubResource( 1 )
 position = Vector2( 96, 0 )
 texture = ExtResource( 4 )
 
-[node name="Coin" parent="." instance=ExtResource( 1 )]
+[node name="MovingPlatform" parent="." instance=ExtResource( 2 )]
+position = Vector2( -224, 128 )
+
+[node name="Stairs" parent="." instance=ExtResource( 5 )]
+position = Vector2( 320, 128 )
+
+[node name="Stairs2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 320, 192 )
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 1 )]
 position = Vector2( 224, 32 )
 
-[node name="Coin2" parent="." instance=ExtResource( 1 )]
+[node name="Coin2" parent="Coins" instance=ExtResource( 1 )]
 position = Vector2( 448, 256 )
 
-[node name="Coin3" parent="." instance=ExtResource( 1 )]
+[node name="Coin3" parent="Coins" instance=ExtResource( 1 )]
 position = Vector2( 160, 416 )
 
-[node name="Coin4" parent="." instance=ExtResource( 1 )]
+[node name="Coin4" parent="Coins" instance=ExtResource( 1 )]
 position = Vector2( -64, 288 )
 
-[node name="Coin5" parent="." instance=ExtResource( 1 )]
+[node name="Coin5" parent="Coins" instance=ExtResource( 1 )]
 position = Vector2( -320, 288 )
