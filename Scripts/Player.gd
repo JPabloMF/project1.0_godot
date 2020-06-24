@@ -31,6 +31,8 @@ func _physics_process(delta):
 		motion.y = 0
 	else:
 		motion.y += 10
+	if motion.y > 800:
+		print("damaged by fall")
 		
 	if Input.is_action_pressed("ui_left"):
 		motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
@@ -40,15 +42,20 @@ func _physics_process(delta):
 		motion.x = lerp(motion.x, 0, 0.2)
 		
 	if Input.is_action_pressed("ui_up"):
-		if is_on_floor() or stairs_entered:
+		if is_on_floor():
 			motion.y = -400
+		elif stairs_entered:
+			motion.y = -300
 	elif Input.is_action_pressed("ui_down"):
-		motion.y = +400
+		if stairs_entered:
+			motion.y = +300
 		
-			
-	if Input.is_action_pressed("ui_accept"):
-		get_tree().paused = false
-	motion = move_and_slide(motion,UP)
+	motion = move_and_slide(motion,Vector2.UP,false,4,PI/4,false)
+	# to be able to push items
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider.is_in_group("bodies"):
+			collision.collider.apply_central_impulse(-collision.normal * 100)
 
 func _on_Player_area_entered(area):
 	danger_element_entered = true

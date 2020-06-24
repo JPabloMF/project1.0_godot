@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MovingPlatform.tscn" type="PackedScene" id=2]
@@ -6,14 +6,19 @@
 [ext_resource path="res://Sprites/icon.png" type="Texture" id=4]
 [ext_resource path="res://Stairs.tscn" type="PackedScene" id=5]
 [ext_resource path="res://DangerPlatform.tscn" type="PackedScene" id=6]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32, 96 )
+[ext_resource path="res://Sprites/block.png" type="Texture" id=7]
+[ext_resource path="res://DangerPlatform.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 96 )
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 9.27538 )
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 32, 32 )
 
 [node name="World1" type="Node2D"]
@@ -43,27 +48,27 @@ position = Vector2( -64, 288 )
 position = Vector2( -320, 288 )
 
 [node name="Coin6" parent="Coins" instance=ExtResource( 1 )]
-position = Vector2( -800, -128 )
+position = Vector2( -800, -224 )
 
 [node name="Stairs" type="Node" parent="."]
 
 [node name="Stairs" parent="Stairs" instance=ExtResource( 5 )]
-position = Vector2( -736, 160 )
+position = Vector2( -736, 64 )
 
 [node name="Stairs2" parent="Stairs" instance=ExtResource( 5 )]
-position = Vector2( -736, 96 )
+position = Vector2( -736, 0 )
 
 [node name="Stairs3" parent="Stairs" instance=ExtResource( 5 )]
-position = Vector2( -736, 32 )
+position = Vector2( -736, -64 )
 
 [node name="StairsArea" type="Area2D" parent="Stairs"]
-position = Vector2( -736, 96 )
+position = Vector2( -736, 0 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/StairsArea"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="PlatformsContainer" type="Node" parent="."]
 
@@ -77,7 +82,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 1/Platform"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 1/Platform"]
 position = Vector2( 96, 0 )
@@ -91,7 +96,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 1/Platform2"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 1/Platform2"]
 position = Vector2( 96, 0 )
@@ -105,7 +110,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 1/Platform3"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 1/Platform3"]
 position = Vector2( 96, 0 )
@@ -119,7 +124,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 1/Platform6"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 1/Platform6"]
 position = Vector2( 96, 0 )
@@ -133,7 +138,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 1/Platform5"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 1/Platform5"]
 position = Vector2( 96, 0 )
@@ -147,7 +152,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 1/Platform4"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 1/Platform4"]
 position = Vector2( 96, 0 )
@@ -163,7 +168,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 2/Platform"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 2/Platform"]
 position = Vector2( 96, 0 )
@@ -177,7 +182,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 2/Platform2"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 2/Platform2"]
 position = Vector2( 96, 0 )
@@ -191,7 +196,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 2/Platform3"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 2/Platform3"]
 position = Vector2( 96, 0 )
@@ -205,7 +210,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 2/Platform6"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 2/Platform6"]
 position = Vector2( 96, 0 )
@@ -219,7 +224,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 2/Platform5"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 2/Platform5"]
 position = Vector2( 96, 0 )
@@ -233,7 +238,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 2/Platform4"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 2/Platform4"]
 position = Vector2( 96, 0 )
@@ -249,7 +254,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 3/Platform"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 3/Platform"]
 position = Vector2( 96, 0 )
@@ -263,7 +268,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 3/Platform2"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 3/Platform2"]
 position = Vector2( 96, 0 )
@@ -277,7 +282,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 3/Platform3"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 3/Platform3"]
 position = Vector2( 96, 0 )
@@ -291,7 +296,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 3/Platform6"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 3/Platform6"]
 position = Vector2( 96, 0 )
@@ -305,7 +310,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 3/Platform5"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 3/Platform5"]
 position = Vector2( 96, 0 )
@@ -319,7 +324,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 3/Platform7"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 3/Platform7"]
 position = Vector2( 96, 0 )
@@ -333,7 +338,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 3/Platform8"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 3/Platform8"]
 position = Vector2( 96, 0 )
@@ -347,7 +352,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 3/Platform4"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 3/Platform4"]
 position = Vector2( 96, 0 )
@@ -363,7 +368,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 4/Platform"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 4/Platform"]
 position = Vector2( 96, 0 )
@@ -377,7 +382,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 4/Platform2"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 4/Platform2"]
 position = Vector2( 96, 0 )
@@ -391,7 +396,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 4/Platform3"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 4/Platform3"]
 position = Vector2( 96, 0 )
@@ -405,7 +410,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 4/Platform6"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 4/Platform6"]
 position = Vector2( 96, 0 )
@@ -419,7 +424,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 4/Platform5"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 4/Platform5"]
 position = Vector2( 96, 0 )
@@ -433,7 +438,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 4/Platform4"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 4/Platform4"]
 position = Vector2( 96, 0 )
@@ -449,21 +454,21 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 5/Platform3"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 5/Platform3"]
 position = Vector2( 96, 0 )
 texture = ExtResource( 4 )
 
 [node name="Platform4" type="StaticBody2D" parent="PlatformsContainer/Platforms 5"]
-position = Vector2( -896, -32 )
+position = Vector2( -896, -128 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 5/Platform4"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 5/Platform4"]
 position = Vector2( 96, 0 )
@@ -477,7 +482,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 5/Platform6"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 5/Platform6"]
 position = Vector2( 96, 0 )
@@ -491,7 +496,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 5/Platform7"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 5/Platform7"]
 position = Vector2( 96, 0 )
@@ -505,7 +510,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 5/Platform8"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 5/Platform8"]
 position = Vector2( 96, 0 )
@@ -519,16 +524,35 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsContainer/Platforms 5/Platform5"]
 position = Vector2( 96, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="PlatformsContainer/Platforms 5/Platform5"]
 position = Vector2( 96, 0 )
 texture = ExtResource( 4 )
 
 [node name="DangerPlatform" parent="." instance=ExtResource( 6 )]
+position = Vector2( -736, 352 )
+script = ExtResource( 8 )
 
 [node name="DangerPlatform" type="Area2D" parent="DangerPlatform"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DangerPlatform/DangerPlatform"]
-position = Vector2( 96, -32 )
 shape = SubResource( 3 )
+
+[node name="Box" type="RigidBody2D" parent="." groups=[
+"bodies",
+]]
+position = Vector2( -224, 320 )
+mass = 10.0
+gravity_scale = 5.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Box"]
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+shape = SubResource( 4 )
+[connection signal="area_entered" from="DangerPlatform/DangerPlatform" to="DangerPlatform" method="_on_DangerPlatform_area_entered"]
+[connection signal="area_exited" from="DangerPlatform/DangerPlatform" to="DangerPlatform" method="_on_DangerPlatform_area_exited"]

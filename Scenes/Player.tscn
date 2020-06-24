@@ -8,7 +8,7 @@
 [ext_resource path="res://Sprites/iconDamaged2.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/iconDamaged.png" type="Texture" id=7]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
@@ -32,7 +32,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "idle"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
